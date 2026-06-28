@@ -98,10 +98,24 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .dc .fill{height:100%;background:var(--green);border-radius:99px}
 .dc.full .fill{background:var(--red)}
 .avail-count{font-size:.68rem;color:var(--muted);margin-bottom:6px}
-.avail-chips{display:flex;flex-wrap:wrap;gap:4px}
-.avail-chip{display:flex;align-items:center;gap:3px;background:var(--bg);border:1px solid var(--border);border-radius:99px;padding:2px 7px;font-size:.71rem}
-.avail-chip.has-lock{border-color:#f5b8c2;background:var(--red-lt)}
-.chip-name{font-weight:500}
+.avail-total{font-size:.7rem;color:var(--muted);margin-bottom:8px}
+.day-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:480px){.day-cols{grid-template-columns:1fr;gap:6px}}
+.day-col{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--surface)}
+.day-col-hdr{padding:8px 10px;background:var(--bg);border-bottom:1px solid var(--border)}
+.day-col-hdr.locked-hdr{background:var(--red-lt);border-bottom-color:#f5b8c2}
+.day-col-title{font-size:.76rem;font-weight:700;color:var(--text)}
+.day-col-date{font-size:.68rem;color:var(--muted);margin-top:1px}
+.day-col-count{font-size:.72rem;font-weight:700}
+.day-col-count.warn{color:var(--warn)}
+.day-col-count.full{color:var(--green)}
+.day-lock-badge{font-size:.62rem;color:var(--red)}
+.day-countdown{font-size:.62rem;color:var(--warn);margin-top:2px}
+.day-col-list{padding:4px 0}
+.day-col-name{font-size:.78rem;padding:4px 10px;display:flex;align-items:center;gap:5px;border-bottom:1px solid var(--border);line-height:1.3}
+.day-col-name:last-child{border-bottom:none}
+.dbl-badge{font-size:.6rem;background:var(--gold-lt);color:var(--gold);padding:1px 5px;border-radius:99px;font-weight:700;flex-shrink:0}
+.day-col-empty{font-size:.76rem;color:var(--muted);padding:10px;font-style:italic}
 .pip{font-size:.58rem;font-weight:700;padding:1px 4px;border-radius:99px}
 .pip-open{background:var(--green-lt);color:var(--green)}
 .pip-locked{background:var(--red-lt);color:var(--red)}
@@ -129,9 +143,6 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .progress-fill{height:100%;background:var(--green);border-radius:99px}
 .progress-fill.full{background:var(--red)}
 
-/* Tips at bottom */
-.tips-banner{background:var(--green-lt);border:1px solid #b7d9c8;border-radius:var(--radius);padding:10px 13px;display:flex;flex-direction:column;gap:5px}
-.tip-row{display:flex;align-items:flex-start;gap:7px;font-size:.79rem;line-height:1.5;color:var(--green)}
 
 /* Venue */
 .venue-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -246,8 +257,6 @@ tr:last-child td{border-bottom:none}
         <div id="matches-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
       </div>
 
-      <!-- Tips -->
-      <div class="tips-banner" id="tips-banner" style="display:none"></div>
 
       <!-- Venue -->
       <div class="card">
@@ -330,7 +339,6 @@ function applyState() {
   renderNextMatch();
   renderAvail();
   renderMatches();
-  renderTips();
   renderLeaderboard();
   renderScores();
 }
@@ -436,10 +444,12 @@ function renderAvail(){
 
     html+='<div class="day-col">';
     html+='<div class="day-col-hdr'+(locked?' locked-hdr':'')+'">'+
-      '<div class="day-col-title">'+d+(locked?' <span class="day-lock-badge">🔒</span>':'')+'</div>'+
+      '<div style="display:flex;align-items:center;justify-content:space-between">'+
+        '<div class="day-col-title">'+d+(locked?' <span class="day-lock-badge">🔒</span>':'')+'</div>'+
+        '<div class="day-col-count '+cntCls+'">'+cntLabel+'</div>'+
+      '</div>'+
       '<div class="day-col-date">'+(wd[d]||'—')+'</div>'+
       (countdown?'<div class="day-countdown">⏱ '+countdown+'</div>':'')+
-      '<div class="day-col-count '+cntCls+'">'+cntLabel+'</div>'+
       '</div>';
     html+='<div class="day-col-list">';
     if(!inDay.length){
@@ -519,16 +529,6 @@ function renderMatches(){
   el.innerHTML=html;
 }
 
-/* ── Tips ──────────────────────────────────────── */
-function renderTips(){
-  var b=document.getElementById('tips-banner');
-  var tips=state&&state.tips?state.tips:[];
-  if(!tips.length){b.style.display='none';return;}
-  b.style.display='flex';
-  b.innerHTML=tips.map(function(t){
-    return '<div class="tip-row"><span>💡</span><span>'+esc(t)+'</span></div>';
-  }).join('');
-}
 
 /* ── Day toggles ───────────────────────────────── */
 function toggleDay(d){
