@@ -20,37 +20,29 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--t
 button{cursor:pointer;font-family:inherit}
 a{color:var(--red);text-decoration:none}
 
-/* header */
 header{background:var(--red);color:#fff;padding:12px 18px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-header h1{font-size:.98rem;font-weight:700;letter-spacing:.01em}
+header h1{font-size:.98rem;font-weight:700}
 .week-badge{margin-left:auto;font-size:.72rem;background:rgba(255,255,255,.22);padding:3px 10px;border-radius:99px;white-space:nowrap}
 
-/* layout */
 main{max-width:700px;margin:0 auto;padding:var(--gap);display:flex;flex-direction:column;gap:var(--gap)}
 
-/* tabs */
 .tabs{display:grid;grid-template-columns:1fr 1fr;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .tab{padding:11px 4px;border:none;background:transparent;font-size:.82rem;font-weight:500;color:var(--muted);border-right:1px solid var(--border);transition:background .12s,color .12s;text-align:center}
 .tab:last-child{border-right:none}
 .tab.active{background:var(--red);color:#fff;font-weight:700}
 
-/* card */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
 .card-title{font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 
-/* tips */
 .tips-banner{background:var(--green-lt);border:1px solid #b7d9c8;border-radius:var(--radius);padding:10px 13px;display:flex;flex-direction:column;gap:5px}
 .tip-row{display:flex;align-items:flex-start;gap:7px;font-size:.81rem;line-height:1.5;color:var(--green)}
 
-/* play+matches two-col */
 .play-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
 @media(max-width:520px){.play-grid{grid-template-columns:1fr}}
 
-/* form */
 select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:var(--radius);font-size:.9rem;font-family:inherit;background:var(--bg);color:var(--text);appearance:none}
 select:focus{outline:2px solid var(--red);outline-offset:1px}
 
-/* day buttons */
 .day-toggles{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:2px}
 .day-btn{padding:9px 2px;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--surface);text-align:center;line-height:1.5;transition:all .15s;width:100%}
 .day-btn .dn{font-size:.63rem;text-transform:uppercase;letter-spacing:.06em;display:block;color:var(--muted)}
@@ -60,7 +52,6 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .day-btn.locked{border-color:var(--green);background:var(--green-lt);cursor:default}
 .day-btn.locked .dn,.day-btn.locked .dd{color:var(--green)}
 
-/* toggle */
 .toggle-row{display:flex;align-items:center;gap:8px;padding:9px 10px;border:1.5px solid var(--border);border-radius:var(--radius);cursor:pointer;user-select:none;transition:border-color .15s,background .15s}
 .toggle-row.on{border-color:var(--gold);background:var(--gold-lt)}
 .tr-icon{font-size:.95rem;flex-shrink:0}
@@ -72,38 +63,35 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .toggle-row.on .sw{background:var(--gold)}
 .toggle-row.on .sw::after{transform:translateX(14px)}
 
-/* buttons */
 .btn{width:100%;padding:10px;border:none;border-radius:var(--radius);font-size:.88rem;font-weight:600;background:var(--red);color:#fff;transition:opacity .15s}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn:not(:disabled):hover{opacity:.85}
 
-/* messages */
 .msg{font-size:.78rem;padding:7px 10px;border-radius:6px;display:none}
 .msg.ok{background:var(--green-lt);color:var(--green);display:block}
 .msg.err{background:var(--warn-lt);color:var(--warn);display:block}
 
-/* availability */
-.day-counts{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:9px}
-.dc{text-align:center;padding:8px 3px;border-radius:var(--radius);border:1px solid var(--border)}
-.dc .n{font-size:1.15rem;font-weight:700;line-height:1;color:var(--green)}
+.day-counts{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:7px}
+.dc{text-align:center;padding:5px 2px;border-radius:var(--radius);border:1px solid var(--border)}
+.dc .n{font-size:.95rem;font-weight:700;line-height:1;color:var(--green)}
 .dc.close .n{color:var(--warn)}
 .dc.full .n{color:var(--red)}
-.dc .lbl{font-size:.6rem;color:var(--muted);margin-top:1px}
-.dc .dt{font-size:.64rem;color:var(--muted);margin-top:1px}
-.dc .bar{height:3px;background:var(--border);border-radius:99px;margin-top:4px;overflow:hidden}
+.dc .lbl{font-size:.56rem;color:var(--muted);margin-top:1px}
+.dc .dt{font-size:.56rem;color:var(--muted)}
+.dc .bar{height:2px;background:var(--border);border-radius:99px;margin-top:3px;overflow:hidden}
 .dc .fill{height:100%;background:var(--green);border-radius:99px;transition:width .4s}
 .dc.full .fill{background:var(--red)}
-.avail-count{font-size:.72rem;color:var(--muted);margin-bottom:7px}
-.avail-list{display:flex;flex-direction:column}
-.avail-row{display:flex;align-items:center;gap:4px;padding:5px 2px;border-bottom:1px solid var(--border);font-size:.8rem;flex-wrap:wrap}
-.avail-row:last-child{border-bottom:none}
-.avail-name{flex:1;font-weight:500;min-width:80px}
-.pip{font-size:.6rem;font-weight:700;padding:2px 5px;border-radius:99px}
+.avail-count{font-size:.68rem;color:var(--muted);margin-bottom:5px}
+/* Compact player list — wrapping chips instead of rows */
+.avail-chips{display:flex;flex-wrap:wrap;gap:4px}
+.avail-chip{display:flex;align-items:center;gap:3px;background:var(--bg);border:1px solid var(--border);border-radius:99px;padding:2px 7px;font-size:.72rem}
+.avail-chip.has-lock{border-color:#f5b8c2;background:var(--red-lt)}
+.avail-chip .chip-name{font-weight:500}
+.pip{font-size:.58rem;font-weight:700;padding:1px 4px;border-radius:99px}
 .pip-open{background:var(--green-lt);color:var(--green)}
 .pip-locked{background:var(--red-lt);color:var(--red)}
 .pip-dbl{background:var(--gold-lt);color:var(--gold)}
 
-/* squads */
 .match-block{margin-bottom:16px}
 .match-block:last-child{margin-bottom:0}
 .legend{font-size:.63rem;font-weight:700;letter-spacing:.07em;color:var(--red);text-transform:uppercase;margin-bottom:4px}
@@ -131,22 +119,18 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .progress-fill{height:100%;background:var(--green);border-radius:99px;transition:width .4s}
 .progress-fill.full{background:var(--red)}
 
-/* wa */
 .wa-block{background:var(--bg);border-radius:var(--radius);padding:10px;font-size:.75rem;font-family:monospace;white-space:pre-wrap;word-break:break-word;line-height:1.6;max-height:180px;overflow-y:auto}
 .copy-btn{margin-top:7px;padding:6px 12px;border:1.5px solid var(--green);border-radius:var(--radius);background:var(--surface);color:var(--green);font-size:.77rem;font-weight:600}
 .copy-btn:hover{background:var(--green-lt)}
 
-/* venue strip */
-.venue-strip{display:flex;align-items:center;gap:10px;font-size:.8rem;flex-wrap:wrap}
-.venue-strip .venue-addr{flex:1;color:var(--muted)}
-.dir-btn-sm{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;background:var(--red);color:#fff;border-radius:var(--radius);font-size:.75rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+.venue-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.venue-addr{flex:1;font-size:.79rem;color:var(--muted)}
+.dir-btn-sm{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;background:var(--red);color:#fff;border-radius:var(--radius);font-size:.75rem;font-weight:600;white-space:nowrap}
 .dir-btn-sm:hover{opacity:.87}
 
-/* leaderboard tab two-col */
 .stats-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
 @media(max-width:500px){.stats-cols{grid-template-columns:1fr}}
 
-/* leaderboard */
 .podium{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px;align-items:end}
 .pod{text-align:center;padding:10px 3px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg)}
 .pod.p1{background:var(--gold-lt);border-color:var(--gold)}
@@ -163,7 +147,6 @@ tr:last-child td{border-bottom:none}
 .pc{font-weight:700;color:var(--green)}
 .pts-key{font-size:.68rem;color:var(--muted);line-height:1.8;margin-top:9px}
 
-/* scores / history */
 .sch-section-lbl{font-size:.61rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 .sch-match{border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;margin-bottom:6px;background:var(--surface)}
 .sch-match:last-child{margin-bottom:0}
@@ -174,13 +157,10 @@ tr:last-child td{border-bottom:none}
 .sch-teams{font-size:.73rem;color:var(--muted);line-height:1.6}
 .sch-wk-lbl{font-size:.67rem;color:var(--muted);margin:9px 0 4px;font-weight:600}
 
-/* loader */
 .loader{text-align:center;padding:24px;color:var(--muted);font-size:.82rem}
 .spinner{width:18px;height:18px;border:3px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 7px}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* divider */
-.divider{height:1px;background:var(--border);margin:4px 0}
+.divider{height:1px;background:var(--border);margin:12px 0}
 </style>
 </head>
 <body>
@@ -201,16 +181,15 @@ tr:last-child td{border-bottom:none}
   <div id="tab-play">
     <div style="display:flex;flex-direction:column;gap:var(--gap)">
 
-      <!-- Tips -->
       <div class="tips-banner" id="tips-banner" style="display:none"></div>
 
-      <!-- Play + Who's in -->
       <div class="play-grid">
 
+        <!-- Submit form -->
         <div class="card">
           <div class="card-title">Your availability</div>
           <div style="display:flex;flex-direction:column;gap:8px">
-            <select id="player-select"><option value="">Select your name…</option></select>
+            <select id="player-select" onchange="saveName()"><option value="">Select your name…</option></select>
             <div>
               <div style="font-size:.71rem;color:var(--muted);margin-bottom:6px">Which days can you play?</div>
               <div class="day-toggles">
@@ -236,10 +215,10 @@ tr:last-child td{border-bottom:none}
             <button class="btn" id="submit-btn" onclick="submitAvail()">Submit</button>
             <div class="msg" id="submit-msg"></div>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScVAxGN1UZ0nGDYmLWWryDFk-FdjbgZ9DI8kzsqLUNB_Y6wug/viewform" target="_blank" style="font-size:.75rem;color:var(--muted);text-align:center;display:block;margin-top:2px">Not registered? Fill the form →</a>
-
           </div>
         </div>
 
+        <!-- Who's in -->
         <div class="card">
           <div class="card-title">Who's in</div>
           <div id="avail-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
@@ -260,7 +239,7 @@ tr:last-child td{border-bottom:none}
         <button class="copy-btn" onclick="copyWA()">Copy to clipboard</button>
       </div>
 
-      <!-- Venue strip -->
+      <!-- Venue -->
       <div class="card">
         <div class="venue-strip">
           <span class="venue-addr">📍 Sport4Lux · 4 Rue de Bouillon, Luxembourg</span>
@@ -274,18 +253,15 @@ tr:last-child td{border-bottom:none}
   <!-- ══ LEADERBOARD ══ -->
   <div id="tab-stats" style="display:none">
     <div class="stats-cols">
-
       <div class="card">
         <div class="card-title">🏆 Leaderboard</div>
         <div id="lb-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
         <div class="pts-key">Win +3 · Draw +1 · Loss +0<br>Played +1 · Two days +1</div>
       </div>
-
       <div class="card">
         <div class="card-title">📋 Scores</div>
         <div id="sch-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
       </div>
-
     </div>
   </div>
 
@@ -300,10 +276,13 @@ var dbl        = false;
 var frozenDays = {};
 var weekDates  = {Tue:'—',Wed:'—',Thu:'—'};
 
-window.addEventListener('DOMContentLoaded', fetchState);
+window.addEventListener('DOMContentLoaded', function(){
+  fetchState();
+});
 
+// ── FETCH ────────────────────────────────────────────────────────────────────
 function fetchState(cb) {
-  fetch(API_URL + '?action=state')
+  fetch(API_URL)
     .then(function(r){return r.json();})
     .then(function(d){state=d;applyState();if(typeof cb==='function')cb();})
     .catch(function(){showMsg('submit-msg','Cannot reach server.',true);});
@@ -311,35 +290,34 @@ function fetchState(cb) {
 
 function applyState() {
   if (!state) return;
-  var wd = state.weekDates || {};
+  var wd = state.weekDates||{};
   weekDates = wd;
-  document.getElementById('hdr-week').textContent = wd.Tue ? 'w/c ' + wd.Tue : state.week || '—';
+  document.getElementById('hdr-week').textContent = wd.Tue ? 'w/c '+wd.Tue : state.week||'—';
 
   ['Tue','Wed','Thu'].forEach(function(d){
-    var el = document.getElementById('date-'+d);
-    if (el) el.textContent = wd[d] || '—';
+    var el=document.getElementById('date-'+d);
+    if(el) el.textContent=wd[d]||'—';
   });
 
-  frozenDays = {};
-  if (state.assignments && state.assignments.matches) {
-    state.assignments.matches.forEach(function(m){
-      if (m.players && m.players.length >= 10) frozenDays[m.day] = true;
-    });
-  }
+  // Frozen days come from server now (28h rule calculated server-side).
+  frozenDays = state.frozenDays||{};
+
   ['Tue','Wed','Thu'].forEach(function(d){
-    var btn = document.getElementById('btn-'+d);
-    if (!btn) return;
-    btn.classList.toggle('locked', !!frozenDays[d]);
-    btn.classList.toggle('active', selDays[d] && !frozenDays[d]);
+    var btn=document.getElementById('btn-'+d);if(!btn)return;
+    btn.classList.toggle('locked',!!frozenDays[d]);
+    btn.classList.toggle('active',selDays[d]&&!frozenDays[d]);
   });
 
-  var sel = document.getElementById('player-select');
-  var cur = sel.value;
-  sel.innerHTML = '<option value="">Select your name…</option>';
+  // Player dropdown — restore saved name from localStorage.
+  var saved = '';
+  try{ saved=localStorage.getItem('lux_player_name')||''; }catch(e){}
+  var sel=document.getElementById('player-select');
+  var cur=sel.value||saved;
+  sel.innerHTML='<option value="">Select your name…</option>';
   (state.players||[]).forEach(function(p){
-    var o = document.createElement('option');
-    o.value = p.name; o.textContent = p.name;
-    if (p.name===cur) o.selected=true;
+    var o=document.createElement('option');
+    o.value=p.name;o.textContent=p.name;
+    if(p.name===cur)o.selected=true;
     sel.appendChild(o);
   });
 
@@ -350,25 +328,34 @@ function applyState() {
   renderScores();
 }
 
-function switchTab(name) {
+// ── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(name){
   ['play','stats'].forEach(function(n,i){
     document.querySelectorAll('.tab')[i].classList.toggle('active',n===name);
     document.getElementById('tab-'+n).style.display=n===name?'block':'none';
   });
 }
 
-function renderTips() {
-  var b    = document.getElementById('tips-banner');
-  var tips = state&&state.tips ? state.tips : [];
-  if (!tips.length){b.style.display='none';return;}
+// ── NAME MEMORY ──────────────────────────────────────────────────────────────
+function saveName(){
+  var name=document.getElementById('player-select').value;
+  try{ if(name) localStorage.setItem('lux_player_name',name); }catch(e){}
+}
+
+// ── TIPS ─────────────────────────────────────────────────────────────────────
+function renderTips(){
+  var b=document.getElementById('tips-banner');
+  var tips=state&&state.tips?state.tips:[];
+  if(!tips.length){b.style.display='none';return;}
   b.style.display='flex';
-  b.innerHTML = tips.map(function(t){
+  b.innerHTML=tips.map(function(t){
     return '<div class="tip-row"><span>💡</span><span>'+esc(t)+'</span></div>';
   }).join('');
 }
 
-function toggleDay(d) {
-  if (frozenDays[d]) return;
+// ── DAY TOGGLES ───────────────────────────────────────────────────────────────
+function toggleDay(d){
+  if(frozenDays[d])return;
   selDays[d]=!selDays[d];
   document.getElementById('btn-'+d).classList.toggle('active',selDays[d]);
 }
@@ -377,13 +364,14 @@ function toggleDouble(){
   document.getElementById('double-row').classList.toggle('on',dbl);
 }
 
-function submitAvail() {
+// ── SUBMIT ────────────────────────────────────────────────────────────────────
+function submitAvail(){
   var name=document.getElementById('player-select').value;
   if(!name){showMsg('submit-msg','Select your name.',true);return;}
   if(!selDays.Tue&&!selDays.Wed&&!selDays.Thu){showMsg('submit-msg','Pick at least one day.',true);return;}
   var btn=document.getElementById('submit-btn');
   btn.disabled=true;btn.textContent='Submitting…';
-  post({action:'submit',name:name,days:selDays,double:dbl})
+  apiCall({action:'submit',name:name,days:selDays,double:dbl})
     .then(function(r){
       if(r.error)showMsg('submit-msg',r.error,true);
       else{showMsg('submit-msg','Done, '+name+'! ⚽',false);fetchState();}
@@ -391,43 +379,52 @@ function submitAvail() {
     .finally(function(){btn.disabled=false;btn.textContent='Submit';});
 }
 
-function renderAvail() {
+// ── AVAILABILITY ──────────────────────────────────────────────────────────────
+function renderAvail(){
   var el=document.getElementById('avail-content');
   if(!state){el.innerHTML=loader_();return;}
   var avail=state.availability||[];
   var wd=state.weekDates||{};
-  if(!avail.length){el.innerHTML='<p style="color:var(--muted);font-size:.8rem">No one yet.</p>';return;}
+  if(!avail.length){el.innerHTML='<p style="color:var(--muted);font-size:.78rem">No one yet.</p>';return;}
 
   var cnt={Tue:0,Wed:0,Thu:0};
   avail.forEach(function(p){['Tue','Wed','Thu'].forEach(function(d){if(p.days[d])cnt[d]++;});});
 
+  // Compact day counters
   var bars='<div class="day-counts">';
   ['Tue','Wed','Thu'].forEach(function(d){
     var n=cnt[d],pct=Math.min(100,Math.round(n/10*100));
     var cls=frozenDays[d]?'full':n>=8?'close':'';
     bars+='<div class="dc '+cls+'">'+
       '<div class="n">'+n+'</div>'+
-      '<div class="lbl">'+d+(frozenDays[d]?' ✓':' /10')+'</div>'+
+      '<div class="lbl">'+d+(frozenDays[d]?' 🔒':' /10')+'</div>'+
       '<div class="dt">'+(wd[d]||'—')+'</div>'+
       '<div class="bar"><div class="fill" style="width:'+pct+'%"></div></div></div>';
   });
   bars+='</div>';
 
-  var html=bars+'<div class="avail-count">'+avail.length+' / '+(state.players||[]).length+'</div><div class="avail-list">';
+  // Compact chip list — one chip per player
+  var chips='<div class="avail-count">'+avail.length+' / '+(state.players||[]).length+'</div>';
+  chips+='<div class="avail-chips">';
   avail.forEach(function(p){
-    html+='<div class="avail-row"><span class="avail-name">'+esc(p.name)+'</span>';
+    var hasLock=['Tue','Wed','Thu'].some(function(d){return p.days[d]&&frozenDays[d];});
+    chips+='<div class="avail-chip'+(hasLock?' has-lock':'')+'">'+
+      '<span class="chip-name">'+esc(p.name)+'</span>';
     ['Tue','Wed','Thu'].forEach(function(d){
-      if(p.days[d]) html+='<span class="pip '+(frozenDays[d]?'pip-locked':'pip-open')+'">'+d+(wd[d]?' '+wd[d]:'')+'</span>';
+      if(p.days[d])chips+='<span class="pip '+(frozenDays[d]?'pip-locked':'pip-open')+'">'+d+'</span>';
     });
-    if(p.double) html+='<span class="pip pip-dbl">×2</span>';
-    html+='</div>';
+    if(p.double)chips+='<span class="pip pip-dbl">×2</span>';
+    chips+='</div>';
   });
-  el.innerHTML=html+'</div>';
+  chips+='</div>';
+
+  el.innerHTML=bars+chips;
 }
 
+// ── MATCHES ───────────────────────────────────────────────────────────────────
 var DAY_FULL={Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday'};
 
-function renderMatches() {
+function renderMatches(){
   var el=document.getElementById('matches-content');
   var waCard=document.getElementById('wa-card');
   if(!state){el.innerHTML=loader_();return;}
@@ -457,13 +454,13 @@ function renderMatches() {
   asgn.matches.forEach(function(m,mi){
     var doublers=(m.meta||[]).filter(function(x){return x.isDouble;}).map(function(x){return x.name;});
     var res=m.result,locked=frozenDays[m.day];
-    if(mi>0) html+='<div class="divider" style="margin:12px 0"></div>';
+    if(mi>0)html+='<div class="divider"></div>';
     html+='<div class="match-block">';
-    if(m.legendName) html+='<div class="legend">'+esc(m.legendName)+'</div>';
+    if(m.legendName)html+='<div class="legend">'+esc(m.legendName)+'</div>';
     html+='<div class="match-hdr">'+
       '<span class="bdg bdg-day">'+DAY_FULL[m.day]+'</span>'+
       '<span class="bdg bdg-date">'+(wd[m.day]||'')+'</span>'+
-      (locked?'<span class="bdg bdg-locked">Locked</span>':'')+
+      (locked?'<span class="bdg bdg-locked">🔒 Locked</span>':'')+
       (res?'<span class="bdg bdg-result">'+res.scoreA+' — '+res.scoreB+'</span>':'')+
       '</div>';
     html+='<div class="teams">';
@@ -471,30 +468,24 @@ function renderMatches() {
       html+='<div class="team"><div class="team-lbl">Team '+t+'</div>';
       (m.teams[t]||[]).forEach(function(n){
         html+='<div class="prow">'+esc(n);
-        if(doublers.indexOf(n)>=0) html+=' <span class="tag tag-dbl">×2</span>';
-        if(strongMap[n])           html+=' <span class="tag tag-str">💪</span>';
+        if(doublers.indexOf(n)>=0)html+=' <span class="tag tag-dbl">×2</span>';
+        if(strongMap[n])html+=' <span class="tag tag-str">💪</span>';
         html+='</div>';
       });
       html+='</div>';
     });
     html+='</div>';
     var sb=(asgn.standby||{})[m.day]||[];
-    if(sb.length) html+='<div class="standby"><div class="sb-lbl">Standby</div>'+sb.map(esc).join(', ')+'</div>';
+    var sbShow=sb.slice(0,2);
+    if(sbShow.length)html+='<div class="standby"><div class="sb-lbl">Subs</div>'+sbShow.map(esc).join(', ')+(sb.length>2?' +'+( sb.length-2)+' more':'')+'</div>';
     html+='</div>';
   });
 
-  var benched=asgn.benched||[],noMatch=asgn.noMatch||[];
-  if(benched.length||noMatch.length){
-    html+='<div class="missed">';
-    if(benched.length)  html+='Benched: '+benched.map(esc).join(', ')+'.';
-    if(noMatch.length)  html+=(benched.length?' ':'')+'No match on their days: '+noMatch.map(esc).join(', ')+'.';
-    html+='</div>';
-  }
+  var benched=asgn.benched||[];
+  if(benched.length)html+='<div class="missed">Benched this week: '+benched.map(esc).join(', ')+'.</div>';
   el.innerHTML=html;
 
-  var strongMap2={};
-  (state.players||[]).forEach(function(p){strongMap2[p.name]=p.strong;});
-  document.getElementById('wa-text').textContent=buildWA(asgn,state.tips||[],state.week,strongMap2,wd);
+  document.getElementById('wa-text').textContent=buildWA(asgn,state.tips||[],state.week,strongMap,wd);
   waCard.style.display='';
 }
 
@@ -504,15 +495,15 @@ function buildWA(asgn,tips,week,sm,wd){
   else{
     asgn.matches.forEach(function(m){
       L.push('');
-      if(m.legendName) L.push('*'+m.legendName+'*');
+      if(m.legendName)L.push('*'+m.legendName+'*');
       L.push('*'+DAY_FULL[m.day]+(wd[m.day]?' · '+wd[m.day]:'')+'*');
       L.push('🟢 Team A: '+(m.teams.A||[]).join(', '));
       L.push('🔵 Team B: '+(m.teams.B||[]).join(', '));
       var dbls=(m.meta||[]).filter(function(x){return x.isDouble;}).map(function(x){return x.name;});
-      if(dbls.length) L.push('(two days: '+dbls.join(', ')+')');
+      if(dbls.length)L.push('(two days: '+dbls.join(', ')+')');
       var sb=(asgn.standby||{})[m.day]||[];
-      if(sb.length) L.push('Standby: '+sb.join(', '));
-      if(m.result)  L.push('Result: '+m.result.scoreA+' — '+m.result.scoreB);
+      if(sb.length)L.push('Standby: '+sb.join(', '));
+      if(m.result)L.push('Result: '+m.result.scoreA+' — '+m.result.scoreB);
     });
   }
   if(tips.length){L.push('');tips.forEach(function(t){L.push('💡 '+t);});}
@@ -526,6 +517,7 @@ function copyWA(){
   });
 }
 
+// ── LEADERBOARD ───────────────────────────────────────────────────────────────
 function renderLeaderboard(){
   var el=document.getElementById('lb-content');
   var board=state&&state.leaderboard?state.leaderboard:[];
@@ -548,33 +540,32 @@ function renderLeaderboard(){
   el.innerHTML=pod+tbl+'</tbody></table>';
 }
 
+// ── SCORES / HISTORY ──────────────────────────────────────────────────────────
 function renderScores(){
   var el=document.getElementById('sch-content');
   if(!state){el.innerHTML=loader_();return;}
   var wd=state.weekDates||{};
   var html='';
 
-  // Upcoming.
   var asgn=state.assignments;
   if(asgn&&asgn.matches&&asgn.matches.length){
     html+='<div class="sch-section-lbl">This week</div>';
     asgn.matches.forEach(function(m){
       html+='<div class="sch-match">';
-      if(m.legendName) html+='<div class="sch-legend">'+esc(m.legendName)+'</div>';
+      if(m.legendName)html+='<div class="sch-legend">'+esc(m.legendName)+'</div>';
       html+='<div class="sch-day-row">'+
         '<span class="bdg bdg-day" style="font-size:.56rem">'+DAY_FULL[m.day]+'</span>'+
         '<span class="bdg bdg-date" style="font-size:.56rem">'+(wd[m.day]||'')+'</span>'+
         (m.result?'<span class="bdg bdg-result" style="font-size:.66rem">'+m.result.scoreA+' — '+m.result.scoreB+'</span>':
-                  '<span style="font-size:.66rem;color:var(--muted);margin-left:auto">No result yet</span>')+
+          '<span style="font-size:.66rem;color:var(--muted);margin-left:auto">Pending</span>')+
         '</div>';
       html+='<div class="sch-teams">🟢 '+(m.teams.A||[]).join(', ')+'<br>🔵 '+(m.teams.B||[]).join(', ')+'</div></div>';
     });
   }
 
-  // History.
   var hist=state.history||[];
   if(hist.length){
-    if(html) html+='<div style="height:8px"></div>';
+    if(html)html+='<div style="height:8px"></div>';
     html+='<div class="sch-section-lbl">Past</div>';
     hist.forEach(function(week){
       html+='<div class="sch-wk-lbl">'+esc(week.week)+'</div>';
@@ -583,21 +574,24 @@ function renderScores(){
         var sA=Number(parts[0]||0),sB=Number(parts[1]||0);
         var out=sA>sB?'A won':sB>sA?'B won':'Draw';
         html+='<div class="sch-match">';
-        if(m.legendName) html+='<div class="sch-legend">'+esc(m.legendName)+'</div>';
+        if(m.legendName)html+='<div class="sch-legend">'+esc(m.legendName)+'</div>';
         html+='<div class="sch-score">'+sA+' — '+sB+'<span class="sch-outcome">'+out+'</span></div>';
         html+='<div class="sch-teams">🟢 '+(m.teamsA||[]).join(', ')+'<br>🔵 '+(m.teamsB||[]).join(', ')+'</div></div>';
       });
     });
   }
 
-  if(!html) html='<p style="color:var(--muted);font-size:.78rem">No matches yet.</p>';
+  if(!html)html='<p style="color:var(--muted);font-size:.78rem">No matches yet.</p>';
   el.innerHTML=html;
 }
 
-function post(body){
-  var url = API_URL + '?data=' + encodeURIComponent(JSON.stringify(body));
+// ── API CALL (GET with data param to avoid CORS) ──────────────────────────────
+function apiCall(body){
+  var url=API_URL+'?data='+encodeURIComponent(JSON.stringify(body));
   return fetch(url).then(function(r){return r.json();});
 }
+
+// ── UTILS ─────────────────────────────────────────────────────────────────────
 function showMsg(id,text,err){
   var el=document.getElementById(id);if(!el)return;
   el.textContent=text;el.className='msg '+(err?'err':'ok');
