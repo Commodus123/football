@@ -595,8 +595,8 @@ function renderScores(){
 }
 
 function post(body){
-  return fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-    .then(function(r){return r.json();});
+  var url = API_URL + '?data=' + encodeURIComponent(JSON.stringify(body));
+  return fetch(url).then(function(r){return r.json();});
 }
 function showMsg(id,text,err){
   var el=document.getElementById(id);if(!el)return;
