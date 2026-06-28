@@ -34,12 +34,11 @@ main{max-width:700px;margin:0 auto;padding:var(--gap);display:flex;flex-directio
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
 .card-title{font-size:.63rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 
-.tips-banner{background:var(--green-lt);border:1px solid #b7d9c8;border-radius:var(--radius);padding:10px 13px;display:flex;flex-direction:column;gap:5px}
-.tip-row{display:flex;align-items:flex-start;gap:7px;font-size:.81rem;line-height:1.5;color:var(--green)}
+/* Two-col for submit + next match */
+.top-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
+@media(max-width:520px){.top-grid{grid-template-columns:1fr}}
 
-.play-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
-@media(max-width:520px){.play-grid{grid-template-columns:1fr}}
-
+/* Submit form */
 select{width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:var(--radius);font-size:.9rem;font-family:inherit;background:var(--bg);color:var(--text);appearance:none}
 select:focus{outline:2px solid var(--red);outline-offset:1px}
 
@@ -71,6 +70,23 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .msg.ok{background:var(--green-lt);color:var(--green);display:block}
 .msg.err{background:var(--warn-lt);color:var(--warn);display:block}
 
+/* Next match card */
+.next-match-empty{color:var(--muted);font-size:.8rem;line-height:1.7}
+.nm-legend{font-size:.62rem;font-weight:700;letter-spacing:.07em;color:var(--red);text-transform:uppercase;margin-bottom:4px}
+.nm-day{display:flex;align-items:center;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.bdg{font-size:.58rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
+.bdg-day{background:var(--green);color:#fff}
+.bdg-date{background:var(--bg);color:var(--muted);border:1px solid var(--border)}
+.bdg-locked{background:var(--red-lt);color:var(--red);border:1px solid #f5b8c2}
+.bdg-result{background:var(--green-lt);color:var(--green);font-size:.72rem}
+.nm-teams{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.nm-team{background:var(--bg);border-radius:var(--radius);padding:8px}
+.nm-team-lbl{font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.nm-player{font-size:.76rem;padding:1px 0}
+.nm-subs{font-size:.72rem;color:var(--muted);margin-top:4px}
+.nm-subs span{font-weight:600}
+
+/* Compact who's in */
 .day-counts{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:7px}
 .dc{text-align:center;padding:5px 2px;border-radius:var(--radius);border:1px solid var(--border)}
 .dc .n{font-size:.95rem;font-weight:700;line-height:1;color:var(--green)}
@@ -79,28 +95,23 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .dc .lbl{font-size:.56rem;color:var(--muted);margin-top:1px}
 .dc .dt{font-size:.56rem;color:var(--muted)}
 .dc .bar{height:2px;background:var(--border);border-radius:99px;margin-top:3px;overflow:hidden}
-.dc .fill{height:100%;background:var(--green);border-radius:99px;transition:width .4s}
+.dc .fill{height:100%;background:var(--green);border-radius:99px}
 .dc.full .fill{background:var(--red)}
-.avail-count{font-size:.68rem;color:var(--muted);margin-bottom:5px}
-/* Compact player list — wrapping chips instead of rows */
+.avail-count{font-size:.68rem;color:var(--muted);margin-bottom:6px}
 .avail-chips{display:flex;flex-wrap:wrap;gap:4px}
-.avail-chip{display:flex;align-items:center;gap:3px;background:var(--bg);border:1px solid var(--border);border-radius:99px;padding:2px 7px;font-size:.72rem}
+.avail-chip{display:flex;align-items:center;gap:3px;background:var(--bg);border:1px solid var(--border);border-radius:99px;padding:2px 7px;font-size:.71rem}
 .avail-chip.has-lock{border-color:#f5b8c2;background:var(--red-lt)}
-.avail-chip .chip-name{font-weight:500}
+.chip-name{font-weight:500}
 .pip{font-size:.58rem;font-weight:700;padding:1px 4px;border-radius:99px}
 .pip-open{background:var(--green-lt);color:var(--green)}
 .pip-locked{background:var(--red-lt);color:var(--red)}
 .pip-dbl{background:var(--gold-lt);color:var(--gold)}
 
+/* All matches section */
 .match-block{margin-bottom:16px}
 .match-block:last-child{margin-bottom:0}
 .legend{font-size:.63rem;font-weight:700;letter-spacing:.07em;color:var(--red);text-transform:uppercase;margin-bottom:4px}
 .match-hdr{display:flex;align-items:center;gap:6px;margin-bottom:8px;flex-wrap:wrap}
-.bdg{font-size:.58rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:99px}
-.bdg-day{background:var(--green);color:#fff}
-.bdg-date{background:var(--bg);color:var(--muted);border:1px solid var(--border)}
-.bdg-locked{background:var(--red-lt);color:var(--red);border:1px solid #f5b8c2}
-.bdg-result{background:var(--green-lt);color:var(--green);margin-left:auto;font-size:.72rem}
 .teams{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .team{background:var(--bg);border-radius:var(--radius);padding:10px}
 .team-lbl{font-size:.58rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
@@ -108,29 +119,29 @@ select:focus{outline:2px solid var(--red);outline-offset:1px}
 .tag{font-size:.58rem;padding:1px 4px;border-radius:99px;font-weight:700}
 .tag-dbl{background:var(--gold-lt);color:var(--gold)}
 .tag-str{background:var(--green-lt);color:var(--green)}
-.standby{margin-top:8px;padding:8px 11px;background:var(--bg);border-radius:var(--radius);font-size:.77rem}
-.sb-lbl{font-weight:700;color:var(--muted);font-size:.6rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:2px}
+.standby{margin-top:8px;padding:7px 10px;background:var(--bg);border-radius:var(--radius);font-size:.76rem;color:var(--muted)}
 .missed{margin-top:8px;font-size:.76rem;color:var(--muted)}
-.no-match{text-align:center;padding:24px 14px;color:var(--muted);font-size:.83rem}
-.no-match-icon{font-size:1.7rem;margin-bottom:7px}
-.progress-rows{display:flex;flex-direction:column;gap:5px;margin-top:10px}
+.no-match{text-align:center;padding:20px 14px;color:var(--muted);font-size:.83rem}
+.no-match-icon{font-size:1.6rem;margin-bottom:6px}
+.progress-rows{display:flex;flex-direction:column;gap:5px;margin-top:8px}
 .progress-row{font-size:.77rem;display:flex;align-items:center;gap:7px}
 .progress-bar{flex:1;height:5px;background:var(--border);border-radius:99px;overflow:hidden}
-.progress-fill{height:100%;background:var(--green);border-radius:99px;transition:width .4s}
+.progress-fill{height:100%;background:var(--green);border-radius:99px}
 .progress-fill.full{background:var(--red)}
 
-.wa-block{background:var(--bg);border-radius:var(--radius);padding:10px;font-size:.75rem;font-family:monospace;white-space:pre-wrap;word-break:break-word;line-height:1.6;max-height:180px;overflow-y:auto}
-.copy-btn{margin-top:7px;padding:6px 12px;border:1.5px solid var(--green);border-radius:var(--radius);background:var(--surface);color:var(--green);font-size:.77rem;font-weight:600}
-.copy-btn:hover{background:var(--green-lt)}
+/* Tips at bottom */
+.tips-banner{background:var(--green-lt);border:1px solid #b7d9c8;border-radius:var(--radius);padding:10px 13px;display:flex;flex-direction:column;gap:5px}
+.tip-row{display:flex;align-items:flex-start;gap:7px;font-size:.79rem;line-height:1.5;color:var(--green)}
 
+/* Venue */
 .venue-strip{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .venue-addr{flex:1;font-size:.79rem;color:var(--muted)}
 .dir-btn-sm{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;background:var(--red);color:#fff;border-radius:var(--radius);font-size:.75rem;font-weight:600;white-space:nowrap}
 .dir-btn-sm:hover{opacity:.87}
 
+/* Leaderboard tab */
 .stats-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);align-items:start}
 @media(max-width:500px){.stats-cols{grid-template-columns:1fr}}
-
 .podium{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:12px;align-items:end}
 .pod{text-align:center;padding:10px 3px;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg)}
 .pod.p1{background:var(--gold-lt);border-color:var(--gold)}
@@ -146,7 +157,6 @@ tr:last-child td{border-bottom:none}
 .rc{font-weight:700;color:var(--muted);font-size:.72rem}
 .pc{font-weight:700;color:var(--green)}
 .pts-key{font-size:.68rem;color:var(--muted);line-height:1.8;margin-top:9px}
-
 .sch-section-lbl{font-size:.61rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
 .sch-match{border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;margin-bottom:6px;background:var(--surface)}
 .sch-match:last-child{margin-bottom:0}
@@ -156,11 +166,11 @@ tr:last-child td{border-bottom:none}
 .sch-outcome{font-size:.68rem;color:var(--muted);margin-left:4px}
 .sch-teams{font-size:.73rem;color:var(--muted);line-height:1.6}
 .sch-wk-lbl{font-size:.67rem;color:var(--muted);margin:9px 0 4px;font-weight:600}
+.divider{height:1px;background:var(--border);margin:12px 0}
 
 .loader{text-align:center;padding:24px;color:var(--muted);font-size:.82rem}
 .spinner{width:18px;height:18px;border:3px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 7px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.divider{height:1px;background:var(--border);margin:12px 0}
 </style>
 </head>
 <body>
@@ -177,15 +187,13 @@ tr:last-child td{border-bottom:none}
     <button class="tab" onclick="switchTab('stats')">Leaderboard</button>
   </div>
 
-  <!-- ══ THIS WEEK ══ -->
+  <!-- THIS WEEK TAB -->
   <div id="tab-play">
     <div style="display:flex;flex-direction:column;gap:var(--gap)">
 
-      <div class="tips-banner" id="tips-banner" style="display:none"></div>
+      <!-- Submit + Next Match side by side -->
+      <div class="top-grid">
 
-      <div class="play-grid">
-
-        <!-- Submit form -->
         <div class="card">
           <div class="card-title">Your availability</div>
           <div style="display:flex;flex-direction:column;gap:8px">
@@ -214,30 +222,32 @@ tr:last-child td{border-bottom:none}
             </div>
             <button class="btn" id="submit-btn" onclick="submitAvail()">Submit</button>
             <div class="msg" id="submit-msg"></div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScVAxGN1UZ0nGDYmLWWryDFk-FdjbgZ9DI8kzsqLUNB_Y6wug/viewform" target="_blank" style="font-size:.75rem;color:var(--muted);text-align:center;display:block;margin-top:2px">Not registered? Fill the form →</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScVAxGN1UZ0nGDYmLWWryDFk-FdjbgZ9DI8kzsqLUNB_Y6wug/viewform" target="_blank" style="font-size:.74rem;color:var(--muted);text-align:center;display:block;margin-top:2px">Not registered? Fill the form →</a>
           </div>
         </div>
 
-        <!-- Who's in -->
+        <!-- Next match -->
         <div class="card">
-          <div class="card-title">Who's in</div>
-          <div id="avail-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
+          <div class="card-title">Next match</div>
+          <div id="next-match-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
         </div>
 
       </div>
 
-      <!-- Squads -->
+      <!-- Who's in — full width, horizontal chips -->
+      <div class="card">
+        <div class="card-title">Who's in this week</div>
+        <div id="avail-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
+      </div>
+
+      <!-- All squads -->
       <div class="card">
         <div class="card-title">This week's squads</div>
         <div id="matches-content"><div class="loader"><div class="spinner"></div>Loading…</div></div>
       </div>
 
-      <!-- WhatsApp -->
-      <div class="card" id="wa-card" style="display:none">
-        <div class="card-title">WhatsApp message</div>
-        <div class="wa-block" id="wa-text"></div>
-        <button class="copy-btn" onclick="copyWA()">Copy to clipboard</button>
-      </div>
+      <!-- Tips -->
+      <div class="tips-banner" id="tips-banner" style="display:none"></div>
 
       <!-- Venue -->
       <div class="card">
@@ -250,7 +260,7 @@ tr:last-child td{border-bottom:none}
     </div>
   </div>
 
-  <!-- ══ LEADERBOARD ══ -->
+  <!-- LEADERBOARD TAB -->
   <div id="tab-stats" style="display:none">
     <div class="stats-cols">
       <div class="card">
@@ -276,11 +286,10 @@ var dbl        = false;
 var frozenDays = {};
 var weekDates  = {Tue:'—',Wed:'—',Thu:'—'};
 
-window.addEventListener('DOMContentLoaded', function(){
-  fetchState();
-});
+var DAY_FULL = {Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday'};
 
-// ── FETCH ────────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', fetchState);
+
 function fetchState(cb) {
   fetch(API_URL)
     .then(function(r){return r.json();})
@@ -299,18 +308,15 @@ function applyState() {
     if(el) el.textContent=wd[d]||'—';
   });
 
-  // Frozen days come from server now (28h rule calculated server-side).
   frozenDays = state.frozenDays||{};
-
   ['Tue','Wed','Thu'].forEach(function(d){
     var btn=document.getElementById('btn-'+d);if(!btn)return;
     btn.classList.toggle('locked',!!frozenDays[d]);
     btn.classList.toggle('active',selDays[d]&&!frozenDays[d]);
   });
 
-  // Player dropdown — restore saved name from localStorage.
-  var saved = '';
-  try{ saved=localStorage.getItem('lux_player_name')||''; }catch(e){}
+  var saved='';
+  try{saved=localStorage.getItem('lux_player_name')||'';}catch(e){}
   var sel=document.getElementById('player-select');
   var cur=sel.value||saved;
   sel.innerHTML='<option value="">Select your name…</option>';
@@ -321,14 +327,14 @@ function applyState() {
     sel.appendChild(o);
   });
 
-  renderTips();
+  renderNextMatch();
   renderAvail();
   renderMatches();
+  renderTips();
   renderLeaderboard();
   renderScores();
 }
 
-// ── TABS ─────────────────────────────────────────────────────────────────────
 function switchTab(name){
   ['play','stats'].forEach(function(n,i){
     document.querySelectorAll('.tab')[i].classList.toggle('active',n===name);
@@ -336,61 +342,76 @@ function switchTab(name){
   });
 }
 
-// ── NAME MEMORY ──────────────────────────────────────────────────────────────
 function saveName(){
   var name=document.getElementById('player-select').value;
-  try{ if(name) localStorage.setItem('lux_player_name',name); }catch(e){}
+  try{if(name)localStorage.setItem('lux_player_name',name);}catch(e){}
 }
 
-// ── TIPS ─────────────────────────────────────────────────────────────────────
-function renderTips(){
-  var b=document.getElementById('tips-banner');
-  var tips=state&&state.tips?state.tips:[];
-  if(!tips.length){b.style.display='none';return;}
-  b.style.display='flex';
-  b.innerHTML=tips.map(function(t){
-    return '<div class="tip-row"><span>💡</span><span>'+esc(t)+'</span></div>';
-  }).join('');
+/* ── Next Match ────────────────────────────────── */
+function renderNextMatch(){
+  var el=document.getElementById('next-match-content');
+  if(!state){el.innerHTML=loader_();return;}
+  var asgn=state.assignments;
+  var wd=state.weekDates||{};
+
+  if(!asgn||!asgn.matches||!asgn.matches.length){
+    // Show progress toward first match
+    var avail=state.availability||[];
+    var cnt={Tue:0,Wed:0,Thu:0};
+    avail.forEach(function(p){['Tue','Wed','Thu'].forEach(function(d){if(p.days[d])cnt[d]++;});});
+    var best=DAYS.reduce(function(a,d){return cnt[d]>cnt[a]?d:a;},'Tue');
+    var n=cnt[best],gap=10-n;
+    el.innerHTML='<div class="next-match-empty">'+
+      (n===0?'No one submitted yet.':
+       gap>0?best+' '+wd[best]+': <strong>'+n+'/10</strong> — '+gap+' more needed':
+       'Solving…')+'</div>';
+    return;
+  }
+
+  // Show the first upcoming match (first in sorted order).
+  var m=asgn.matches[0];
+  var strongMap={};
+  (state.players||[]).forEach(function(p){strongMap[p.name]=p.strong;});
+  var doublers=(m.meta||[]).filter(function(x){return x.isDouble;}).map(function(x){return x.name;});
+  var locked=frozenDays[m.day];
+  var sb=(asgn.standby||{})[m.day]||[];
+
+  var html='';
+  if(m.legendName)html+='<div class="nm-legend">'+esc(m.legendName)+'</div>';
+  html+='<div class="nm-day">'+
+    '<span class="bdg bdg-day">'+DAY_FULL[m.day]+'</span>'+
+    '<span class="bdg bdg-date">'+(wd[m.day]||'')+'</span>'+
+    (locked?'<span class="bdg bdg-locked">🔒</span>':'')+
+    (m.result?'<span class="bdg bdg-result">'+m.result.scoreA+' — '+m.result.scoreB+'</span>':'')+
+    '</div>';
+  html+='<div class="nm-teams">';
+  ['A','B'].forEach(function(t){
+    html+='<div class="nm-team"><div class="nm-team-lbl">Team '+t+'</div>';
+    (m.teams[t]||[]).forEach(function(n){
+      html+='<div class="nm-player">'+esc(n)+
+        (doublers.indexOf(n)>=0?' <span style="font-size:.58rem;color:var(--gold)">×2</span>':'')+
+        (strongMap[n]?' <span style="font-size:.58rem;color:var(--green)">💪</span>':'')+
+        '</div>';
+    });
+    html+='</div>';
+  });
+  html+='</div>';
+  var sbShow=sb.slice(0,2);
+  if(sbShow.length) html+='<div class="nm-subs"><span>Subs:</span> '+sbShow.map(esc).join(', ')+(sb.length>2?' +'+( sb.length-2)+' more':'')+'</div>';
+  el.innerHTML=html;
 }
 
-// ── DAY TOGGLES ───────────────────────────────────────────────────────────────
-function toggleDay(d){
-  if(frozenDays[d])return;
-  selDays[d]=!selDays[d];
-  document.getElementById('btn-'+d).classList.toggle('active',selDays[d]);
-}
-function toggleDouble(){
-  dbl=!dbl;
-  document.getElementById('double-row').classList.toggle('on',dbl);
-}
-
-// ── SUBMIT ────────────────────────────────────────────────────────────────────
-function submitAvail(){
-  var name=document.getElementById('player-select').value;
-  if(!name){showMsg('submit-msg','Select your name.',true);return;}
-  if(!selDays.Tue&&!selDays.Wed&&!selDays.Thu){showMsg('submit-msg','Pick at least one day.',true);return;}
-  var btn=document.getElementById('submit-btn');
-  btn.disabled=true;btn.textContent='Submitting…';
-  apiCall({action:'submit',name:name,days:selDays,double:dbl})
-    .then(function(r){
-      if(r.error)showMsg('submit-msg',r.error,true);
-      else{showMsg('submit-msg','Done, '+name+'! ⚽',false);fetchState();}
-    })
-    .finally(function(){btn.disabled=false;btn.textContent='Submit';});
-}
-
-// ── AVAILABILITY ──────────────────────────────────────────────────────────────
+/* ── Who's In ──────────────────────────────────── */
 function renderAvail(){
   var el=document.getElementById('avail-content');
   if(!state){el.innerHTML=loader_();return;}
   var avail=state.availability||[];
   var wd=state.weekDates||{};
-  if(!avail.length){el.innerHTML='<p style="color:var(--muted);font-size:.78rem">No one yet.</p>';return;}
+  if(!avail.length){el.innerHTML='<p style="color:var(--muted);font-size:.78rem">No one submitted yet.</p>';return;}
 
   var cnt={Tue:0,Wed:0,Thu:0};
   avail.forEach(function(p){['Tue','Wed','Thu'].forEach(function(d){if(p.days[d])cnt[d]++;});});
 
-  // Compact day counters
   var bars='<div class="day-counts">';
   ['Tue','Wed','Thu'].forEach(function(d){
     var n=cnt[d],pct=Math.min(100,Math.round(n/10*100));
@@ -403,7 +424,6 @@ function renderAvail(){
   });
   bars+='</div>';
 
-  // Compact chip list — one chip per player
   var chips='<div class="avail-count">'+avail.length+' / '+(state.players||[]).length+'</div>';
   chips+='<div class="avail-chips">';
   avail.forEach(function(p){
@@ -417,18 +437,13 @@ function renderAvail(){
     chips+='</div>';
   });
   chips+='</div>';
-
   el.innerHTML=bars+chips;
 }
 
-// ── MATCHES ───────────────────────────────────────────────────────────────────
-var DAY_FULL={Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday'};
-
+/* ── All Squads ────────────────────────────────── */
 function renderMatches(){
   var el=document.getElementById('matches-content');
-  var waCard=document.getElementById('wa-card');
   if(!state){el.innerHTML=loader_();return;}
-
   var asgn=state.assignments;
   var avail=state.availability||[];
   var wd=state.weekDates||{};
@@ -445,7 +460,7 @@ function renderMatches(){
         '<span style="width:32px;text-align:right;font-size:.74rem;color:var(--muted)">'+n+'/10</span></div>';
     });
     el.innerHTML='<div class="no-match"><div class="no-match-icon">🕐</div>Squads form once a day hits 10.'+pRows+'</div>';
-    waCard.style.display='none';return;
+    return;
   }
 
   var strongMap={};
@@ -477,47 +492,53 @@ function renderMatches(){
     html+='</div>';
     var sb=(asgn.standby||{})[m.day]||[];
     var sbShow=sb.slice(0,2);
-    if(sbShow.length)html+='<div class="standby"><div class="sb-lbl">Subs</div>'+sbShow.map(esc).join(', ')+(sb.length>2?' +'+( sb.length-2)+' more':'')+'</div>';
+    if(sbShow.length)html+='<div class="standby"><strong>Subs:</strong> '+sbShow.map(esc).join(', ')+(sb.length>2?' +'+( sb.length-2)+' more':'')+'</div>';
     html+='</div>';
   });
 
   var benched=asgn.benched||[];
-  if(benched.length)html+='<div class="missed">Benched this week: '+benched.map(esc).join(', ')+'.</div>';
+  if(benched.length)html+='<div class="missed">Benched: '+benched.map(esc).join(', ')+'.</div>';
   el.innerHTML=html;
-
-  document.getElementById('wa-text').textContent=buildWA(asgn,state.tips||[],state.week,strongMap,wd);
-  waCard.style.display='';
 }
 
-function buildWA(asgn,tips,week,sm,wd){
-  var L=['⚽ LUX Idman Yurdu — '+week];
-  if(!asgn||!asgn.matches||!asgn.matches.length){L.push('No full match yet — submit your availability!');}
-  else{
-    asgn.matches.forEach(function(m){
-      L.push('');
-      if(m.legendName)L.push('*'+m.legendName+'*');
-      L.push('*'+DAY_FULL[m.day]+(wd[m.day]?' · '+wd[m.day]:'')+'*');
-      L.push('🟢 Team A: '+(m.teams.A||[]).join(', '));
-      L.push('🔵 Team B: '+(m.teams.B||[]).join(', '));
-      var dbls=(m.meta||[]).filter(function(x){return x.isDouble;}).map(function(x){return x.name;});
-      if(dbls.length)L.push('(two days: '+dbls.join(', ')+')');
-      var sb=(asgn.standby||{})[m.day]||[];
-      if(sb.length)L.push('Standby: '+sb.join(', '));
-      if(m.result)L.push('Result: '+m.result.scoreA+' — '+m.result.scoreB);
-    });
-  }
-  if(tips.length){L.push('');tips.forEach(function(t){L.push('💡 '+t);});}
-  return L.join('\n');
+/* ── Tips ──────────────────────────────────────── */
+function renderTips(){
+  var b=document.getElementById('tips-banner');
+  var tips=state&&state.tips?state.tips:[];
+  if(!tips.length){b.style.display='none';return;}
+  b.style.display='flex';
+  b.innerHTML=tips.map(function(t){
+    return '<div class="tip-row"><span>💡</span><span>'+esc(t)+'</span></div>';
+  }).join('');
 }
 
-function copyWA(){
-  navigator.clipboard.writeText(document.getElementById('wa-text').textContent).then(function(){
-    var b=document.querySelector('.copy-btn');b.textContent='Copied ✓';
-    setTimeout(function(){b.textContent='Copy to clipboard';},2000);
-  });
+/* ── Day toggles ───────────────────────────────── */
+function toggleDay(d){
+  if(frozenDays[d])return;
+  selDays[d]=!selDays[d];
+  document.getElementById('btn-'+d).classList.toggle('active',selDays[d]);
+}
+function toggleDouble(){
+  dbl=!dbl;
+  document.getElementById('double-row').classList.toggle('on',dbl);
 }
 
-// ── LEADERBOARD ───────────────────────────────────────────────────────────────
+/* ── Submit ────────────────────────────────────── */
+function submitAvail(){
+  var name=document.getElementById('player-select').value;
+  if(!name){showMsg('submit-msg','Select your name.',true);return;}
+  if(!selDays.Tue&&!selDays.Wed&&!selDays.Thu){showMsg('submit-msg','Pick at least one day.',true);return;}
+  var btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Submitting…';
+  apiCall({action:'submit',name:name,days:selDays,double:dbl})
+    .then(function(r){
+      if(r.error)showMsg('submit-msg',r.error,true);
+      else{showMsg('submit-msg','Done, '+name+'! ⚽',false);fetchState();}
+    })
+    .finally(function(){btn.disabled=false;btn.textContent='Submit';});
+}
+
+/* ── Leaderboard ───────────────────────────────── */
 function renderLeaderboard(){
   var el=document.getElementById('lb-content');
   var board=state&&state.leaderboard?state.leaderboard:[];
@@ -540,13 +561,12 @@ function renderLeaderboard(){
   el.innerHTML=pod+tbl+'</tbody></table>';
 }
 
-// ── SCORES / HISTORY ──────────────────────────────────────────────────────────
+/* ── Scores / History ──────────────────────────── */
 function renderScores(){
   var el=document.getElementById('sch-content');
   if(!state){el.innerHTML=loader_();return;}
   var wd=state.weekDates||{};
   var html='';
-
   var asgn=state.assignments;
   if(asgn&&asgn.matches&&asgn.matches.length){
     html+='<div class="sch-section-lbl">This week</div>';
@@ -562,7 +582,6 @@ function renderScores(){
       html+='<div class="sch-teams">🟢 '+(m.teams.A||[]).join(', ')+'<br>🔵 '+(m.teams.B||[]).join(', ')+'</div></div>';
     });
   }
-
   var hist=state.history||[];
   if(hist.length){
     if(html)html+='<div style="height:8px"></div>';
@@ -580,18 +599,17 @@ function renderScores(){
       });
     });
   }
-
   if(!html)html='<p style="color:var(--muted);font-size:.78rem">No matches yet.</p>';
   el.innerHTML=html;
 }
 
-// ── API CALL (GET with data param to avoid CORS) ──────────────────────────────
+/* ── Helpers ───────────────────────────────────── */
+var DAYS=['Tue','Wed','Thu'];
+
 function apiCall(body){
   var url=API_URL+'?data='+encodeURIComponent(JSON.stringify(body));
   return fetch(url).then(function(r){return r.json();});
 }
-
-// ── UTILS ─────────────────────────────────────────────────────────────────────
 function showMsg(id,text,err){
   var el=document.getElementById(id);if(!el)return;
   el.textContent=text;el.className='msg '+(err?'err':'ok');
