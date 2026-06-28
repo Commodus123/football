@@ -409,35 +409,53 @@ function renderAvail(){
   var wd=state.weekDates||{};
   if(!avail.length){el.innerHTML='<p style="color:var(--muted);font-size:.78rem">No one submitted yet.</p>';return;}
 
-  var cnt={Tue:0,Wed:0,Thu:0};
-  avail.forEach(function(p){['Tue','Wed','Thu'].forEach(function(d){if(p.days[d])cnt[d]++;});});
+  var total=avail.length;
+  var html='<div class="avail-total">'+total+' of '+(state.players||[]).length+' submitted</div>';
+  html+='<div class="day-cols">';
 
-  var bars='<div class="day-counts">';
   ['Tue','Wed','Thu'].forEach(function(d){
-    var n=cnt[d],pct=Math.min(100,Math.round(n/10*100));
-    var cls=frozenDays[d]?'full':n>=8?'close':'';
-    bars+='<div class="dc '+cls+'">'+
-      '<div class="n">'+n+'</div>'+
-      '<div class="lbl">'+d+(frozenDays[d]?' 🔒':' /10')+'</div>'+
-      '<div class="dt">'+(wd[d]||'—')+'</div>'+
-      '<div class="bar"><div class="fill" style="width:'+pct+'%"></div></div></div>';
-  });
-  bars+='</div>';
+    var inDay=avail.filter(function(p){return p.days[d];});
+    var n=inDay.length;
+    var locked=frozenDays[d];
+    var cntCls=locked?'full':n>=10?'full':n>=8?'warn':'';
+    var cntLabel=n+'/10';
 
-  var chips='<div class="avail-count">'+avail.length+' / '+(state.players||[]).length+'</div>';
-  chips+='<div class="avail-chips">';
-  avail.forEach(function(p){
-    var hasLock=['Tue','Wed','Thu'].some(function(d){return p.days[d]&&frozenDays[d];});
-    chips+='<div class="avail-chip'+(hasLock?' has-lock':'')+'">'+
-      '<span class="chip-name">'+esc(p.name)+'</span>';
-    ['Tue','Wed','Thu'].forEach(function(d){
-      if(p.days[d])chips+='<span class="pip '+(frozenDays[d]?'pip-locked':'pip-open')+'">'+d+'</span>';
-    });
-    if(p.double)chips+='<span class="pip pip-dbl">×2</span>';
-    chips+='</div>';
+    // Countdown to lock: match at 20:00 on match day, freeze 28h before
+    var countdown='';
+    var isoKey=d+'_iso';
+    if(!locked&&wd[isoKey]){
+      var matchMs=new Date(wd[isoKey]+'T20:00:00').getTime();
+      var freezeMs=matchMs-(28*3600*1000);
+      var diffMs=freezeMs-Date.now();
+      if(diffMs>0){
+        var diffH=Math.floor(diffMs/3600000);
+        var diffM=Math.floor((diffMs%3600000)/60000);
+        countdown=diffH>0?'locks in '+diffH+'h':'locks in '+diffM+'m';
+      }
+    }
+
+    html+='<div class="day-col">';
+    html+='<div class="day-col-hdr'+(locked?' locked-hdr':'')+'">'+
+      '<div class="day-col-title">'+d+(locked?' <span class="day-lock-badge">🔒</span>':'')+'</div>'+
+      '<div class="day-col-date">'+(wd[d]||'—')+'</div>'+
+      (countdown?'<div class="day-countdown">⏱ '+countdown+'</div>':'')+
+      '<div class="day-col-count '+cntCls+'">'+cntLabel+'</div>'+
+      '</div>';
+    html+='<div class="day-col-list">';
+    if(!inDay.length){
+      html+='<div class="day-col-empty">No one yet</div>';
+    } else {
+      inDay.forEach(function(p){
+        html+='<div class="day-col-name">'+esc(p.name)+
+          (p.double?'<span class="dbl-badge">×2</span>':'')+
+          '</div>';
+      });
+    }
+    html+='</div></div>';
   });
-  chips+='</div>';
-  el.innerHTML=bars+chips;
+
+  html+='</div>';
+  el.innerHTML=html;
 }
 
 /* ── All Squads ────────────────────────────────── */
